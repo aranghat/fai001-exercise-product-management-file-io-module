@@ -8,10 +8,22 @@ namespace Repositories
 {
     public class ProductRepository
     {
+        readonly DataContext context;
+        readonly ProductRepository repository;
+
+        public bool Has { get; private set; }
+        public object Assert { get; private set; }
+
         // declare field of type DataContext
 
-        public ProductRepository(<parameter>)
+        public ProductRepository(ProductList filepath)
         {
+            string folder = "Product";
+            int rootPosition = Environment.CurrentDirectory.IndexOf("bin");
+            string rootFolder = Environment.CurrentDirectory.Substring(0, rootPosition - folder.Length - 1);
+            context = new DataContext("Products.dat", rootFolder);
+
+            repository = new ProductRepository(context);
             //initialize the DataContext field with parameter passed    
         }
 
@@ -19,9 +31,25 @@ namespace Repositories
          * this method should accept product data and add it to the product collection
          * 
          */
-        public <return_type> AddProduct(<parameter>)
+        public void AddProduct(ProductList filepath)
         {
+            var product = new ProductList
+            {
+                ProductId = 8,
+                ProductName = "bull",
+                Price = 2500,
+                InStock = true
+            };
+            repository.AddProduct(Product);
+
+            Assert.That(repository.GetAllProducts(), Has.Count.EqualTo(1), message: "Count of total products must be 1");
+
             // code to add product to file, ensuring that product is not null
+        }
+
+        private object GetAllProducts()
+        {
+            throw new NotImplementedException();
         }
 
 
@@ -31,19 +59,23 @@ namespace Repositories
          * 
          * the method should return true for success and false for invalid id 
          */
-        public <return_type> RemoveProduct(<parameter>)
+        public void RemoveProduct(Product filepath)
         {
+            var result = repository.RemoveProduct(1001);
+
+            Assert.That(result, Is.True, message: "RemoveProduct() should return true for valid product id");
+            Assert.That(repository.GetAllProducts(), Has.Count.EqualTo(1), message: "Count of products should be 1");
             // code to remove product by the id provided from file as parameter    
         }
 
-        /*
-         * this method should search and return product by product name from the file 
-         * 
-         * the search value should be passed as parameter
-         * 
-         * the method should return null for non-matching product name
-         */
-        public <return_type> GetProduct(<parameter>)
+        
+        /
+private object RemoveProduct(int v)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void GetProduct(Product fielpath)
         {
 
         }
@@ -55,7 +87,7 @@ namespace Repositories
          * 
          * the method should return null for non-matching product id
          */
-        public <return_type> GetProduct(<parameter>)
+        public void GetProduct(Product fielpath)
         {
 
         }
@@ -64,8 +96,15 @@ namespace Repositories
         /*
          * this method should return all items from the product collection
          */
-        public <return_type> GetAllProducts()
+        public void GetAllProducts()
         {
+            foreach (var i in ProductName)
+            {
+
+
+
+                Console.WriteLine($"Remaining Products are:{i}");
+            }
 
         }
     }
