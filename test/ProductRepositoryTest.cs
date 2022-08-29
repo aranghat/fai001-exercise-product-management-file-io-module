@@ -26,7 +26,7 @@ namespace test
         [Test, Order(0)]
         public void Should_AddProduct_Return_1001()
         {
-            var product = new Product
+            var product = new ProductList
             {
                 ProductId = 1001,
                 ProductName = "Titan white square dial watch for men",
@@ -42,7 +42,7 @@ namespace test
         [Test, Order(1)]
         public void Should_AddProduct_Return_1002()
         {
-            var product = new Product{
+            var product = new ProductList{
                     ProductId = 1001,
                     ProductName = "Titan black dial watch for women",
                     Price = 2200,
@@ -78,7 +78,7 @@ namespace test
         {
             var result = repository.GetAllProducts();
 
-            Assert.That(result, Is.TypeOf<List<Product>>(), message: "List<Product> should be returned");
+            Assert.That(result, Is.TypeOf<List<ProductList>>(), message: "List<Product> should be returned");
             Assert.That(result.Count, Is.EqualTo(2), message: "Count of products must be 2");
         }
 

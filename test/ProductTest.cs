@@ -9,10 +9,10 @@ namespace test
     [TestFixture]
     public class ProductTest
     {
-        readonly Product product;
+        readonly ProductList product;
         public ProductTest()
         {
-            product = new Product
+            product = new ProductList
             {
                 Price = 2300,
                 ProductId = 1005,
