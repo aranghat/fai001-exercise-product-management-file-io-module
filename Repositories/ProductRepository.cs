@@ -27,6 +27,11 @@ namespace Repositories
             //initialize the DataContext field with parameter passed    
         }
 
+        public ProductRepository(DataContext context)
+        {
+            this.context = context;
+        }
+
         /*
          * this method should accept product data and add it to the product collection
          * 
@@ -89,7 +94,13 @@ private object RemoveProduct(int v)
          */
         public void GetProduct(Product fielpath)
         {
-
+            if (Product.ContainsValue(ProductId))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
         }
 
         

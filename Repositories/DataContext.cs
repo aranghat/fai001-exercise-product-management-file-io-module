@@ -23,6 +23,8 @@ namespace Repositories
         public object Product1 { get => Product1; set => Product1 = value; }
 
         string filepath = @"C:\New folder\temp\New folder\product.xml";
+        private string v;
+        private string rootFolder;
 
 
         // the constructor should accept filename and path strings
@@ -40,6 +42,12 @@ namespace Repositories
 
             // if no data is present an empty list should be created 
 
+        }
+
+        public DataContext(string v, string rootFolder)
+        {
+            this.v = v;
+            this.rootFolder = rootFolder;
         }
 
         // this method should return the list of products read from file
