@@ -9,5 +9,10 @@ namespace Repositories
         { 
             throw new NotImplementedException();
         }
+
+        internal static bool ContainsValue(object productId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

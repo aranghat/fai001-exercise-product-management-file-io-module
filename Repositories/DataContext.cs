@@ -92,8 +92,7 @@ namespace Repositories
             var xmlContent = File.ReadAllText(@"C:\New folder\temp\New folder\product.xml");
             Product = xmlConvert.DeserializeObject<List<Product>>(xmlContent);
 
-            foreach (var p in ProductList)
-                Console.WriteLine(p);
+            
 
         }
     }

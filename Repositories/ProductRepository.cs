@@ -13,6 +13,9 @@ namespace Repositories
 
         public bool Has { get; private set; }
         public object Assert { get; private set; }
+        public bool Is { get; private set; }
+        public object ProductId { get; private set; }
+        public IEnumerable<object> ProductName { get; private set; }
 
         // declare field of type DataContext
 
@@ -45,7 +48,7 @@ namespace Repositories
                 Price = 2500,
                 InStock = true
             };
-            repository.AddProduct(Product);
+            repository.AddProduct(ProductList);
 
             Assert.That(repository.GetAllProducts(), Has.Count.EqualTo(1), message: "Count of total products must be 1");
 
@@ -64,17 +67,17 @@ namespace Repositories
          * 
          * the method should return true for success and false for invalid id 
          */
-        public void RemoveProduct(Product filepath)
+        public void RemoveProduct(ProductList filepath)
         {
             var result = repository.RemoveProduct(1001);
 
-            Assert.That(result, Is.True, message: "RemoveProduct() should return true for valid product id");
-            Assert.That(repository.GetAllProducts(), Has.Count.EqualTo(1), message: "Count of products should be 1");
+            object p = Assert.That(result, Is.True, message: "RemoveProduct() should return true for valid product id");
+            object p1 = Assert.That(repository.GetAllProducts(), Has.Count.EqualTo(1), message: "Count of products should be 1");
             // code to remove product by the id provided from file as parameter    
         }
 
         
-        /
+        
 private object RemoveProduct(int v)
         {
             throw new NotImplementedException();
@@ -92,7 +95,7 @@ private object RemoveProduct(int v)
          * 
          * the method should return null for non-matching product id
          */
-        public void GetProduct(Product fielpath)
+        public bool GetProduct(ProductList fielpath)
         {
             if (Product.ContainsValue(ProductId))
             {
@@ -107,7 +110,7 @@ private object RemoveProduct(int v)
         /*
          * this method should return all items from the product collection
          */
-        public void GetAllProducts()
+        void GetAllProducts()
         {
             foreach (var i in ProductName)
             {
